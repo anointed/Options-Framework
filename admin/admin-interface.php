@@ -1209,14 +1209,20 @@ public static function optionsframework_slider_function($id,$std,$oldorder,$orde
 	
     if (isset($slide[$oldorder])) { $val = $slide[$oldorder]; } else {$val = $std;}
 	
+	//initialize all vars
+	$slidevars = array('title','url','link','description');
+	
+	foreach ($slidevars as $slidevar) {
+		if (!isset($val[$slidevar])) {
+			$val[$slidevar] = '';
+		}
+	}
+	
+	//begin slider interface	
 	if (!empty($val['title'])) {
-	$slider .= '<li><div class="slide_header"><strong>'.stripslashes($val['title']).'</strong>';
+		$slider .= '<li><div class="slide_header"><strong>'.stripslashes($val['title']).'</strong>';
 	} else {
-    $slider .= '<li><div class="slide_header"><strong>Slide '.$order.'</strong>';
-	$val['title'] = '';
-	$val['url'] = '';
-	$val['link'] = '';
-	$val['description'] = '';
+		$slider .= '<li><div class="slide_header"><strong>Slide '.$order.'</strong>';
 	}
 	
 	$slider .= '<input type="hidden" class="slide of-input order" name="'. $id .'['.$order.'][order]" id="'. $id.'_'.$order .'_slide_order" value="'.$order.'" />';
