@@ -56,12 +56,12 @@ $bg_images_url = get_bloginfo('template_url').'/images/bg/'; // change this to w
 $bg_images = array();
 
 if ( is_dir($bg_images_path) ) {
-    if ($bg_images_dir = opendir($bg_images_path) ) {
+    if ($bg_images_dir = opendir($bg_images_path) ) { 
         while ( ($bg_images_file = readdir($bg_images_dir)) !== false ) {
-            if(stristr($bg_images_file, ".png") !== false || stristr($bg_images_file, ".jpg") !== false)) {
+            if(stristr($bg_images_file, ".png") !== false || stristr($bg_images_file, ".jpg") !== false) {
                 $bg_images[] = $bg_images_url . $bg_images_file;
             }
-        }
+        }    
     }
 }
 
@@ -132,7 +132,7 @@ $of_options[] = array( "name" => "Background Images",
 					"desc" => "Select a background pattern.",
 					"id" => "custom_bg",
 					"std" => $bg_images_url."bg0.png",
-					"type" => "background",
+					"type" => "tiles",
 					"options" => $bg_images,
 					);
 					
